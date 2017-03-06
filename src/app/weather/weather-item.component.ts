@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {WeatherItem} from "./weather-item";
 
 @Component({
@@ -11,18 +11,13 @@ import {WeatherItem} from "./weather-item";
           <div class="">
             <p>{{weatherItem.description}}</p>
            </div>
-            <span>{{weatherItem.temperature}}</span>
+            <span>{{weatherItem.temperature}} °C</span>
         </article>
         
   `,
-  styles: []
+  styles: [],
+
 })
 export class WeatherItemComponent {
-  weatherItem: WeatherItem;
-  constructor() {
-    this.weatherItem = new WeatherItem('Odessa', 'Clods',37)
-  }
-
-
-
+  @Input('item') weatherItem: WeatherItem;
 }
