@@ -5,9 +5,9 @@ import { CommonModule } from '@angular/common'
   selector: 'app-weather-search',
   template: `
     <section>
-        <form (ngSubmit)="OnSubmit(form)" #form="ngForm">
+        <form (ngSubmit)="OnSubmit(); weatherForm.reset()" #weatherForm="ngForm">
             <label for="city"></label>
-            <input ngContol="location" type="text" id="city" required>
+            <input  type="text" [(ngModel)]="newWeatherTitle" id="city" name="location" required>
             <button type="submit">Add City</button>
         </form>
         <div class="">
@@ -18,8 +18,13 @@ import { CommonModule } from '@angular/common'
   styles: []
 })
 export class WeatherSearchComponent implements OnInit {
+  newWeatherTitle = '';
 
-  onSubmit(form: CommonModule) {
+  OnSubmit() {
+
+    let title = this.newWeatherTitle;
+    console.log(title);
+    this.newWeatherTitle = '';
 
   }
   constructor() { }
