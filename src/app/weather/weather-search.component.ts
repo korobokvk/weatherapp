@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'
+import { WeatherService } from './weather.service';
+import {WeatherItem} from "./weather-item";
 
 @Component({
   selector: 'app-weather-search',
@@ -20,14 +21,20 @@ import { CommonModule } from '@angular/common'
 export class WeatherSearchComponent implements OnInit {
   newWeatherTitle = '';
 
-  OnSubmit() {
+  constructor(private _weatherService: WeatherService ) { }
 
+  OnSubmit() {
     let title = this.newWeatherTitle;
-    console.log(title);
+    this._weatherService.searchWeateherData(title)
+      .subscribe(
+        data => {
+          const weatherItem = new WeatherItem(data[0].Key, data[0].description, data[0].GmtOffset);
+          this._weatherService.addWeatherItem(weatherItem);
+        }
+      );
     this.newWeatherTitle = '';
 
   }
-  constructor() { }
 
   ngOnInit() {
   }

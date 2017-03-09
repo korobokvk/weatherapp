@@ -8,13 +8,15 @@ import { WeatherListComponent } from './weather/weather-list.component';
 import { WeatherItemComponent } from './weather/weather-item.component';
 import {WeatherService} from "./weather/weather.service";
 import { WeatherSearchComponent } from './weather/weather-search.component';
+import { GetComponent } from './get.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherListComponent,
     WeatherItemComponent,
-    WeatherSearchComponent
+    WeatherSearchComponent,
+    GetComponent
   ],
   imports: [
     BrowserModule,
